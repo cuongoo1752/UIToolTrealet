@@ -1,0 +1,33 @@
+{
+  "trealet": {
+    "Id": 1,
+    "Title": "CỔ VẬT",
+    "Decs": "SJFLAKSD",
+    "ImageAvatarCode": null,
+    "Images": [
+      {
+        "Id": 1,
+        "Code": "12"
+      }
+    ],
+    "Videos": [
+      {
+        "Id": 1,
+        "Url": "álkf",
+        "Title": "Video trống đồng",
+        "Type": "Youtube"
+      }
+    ],
+    "Interaction": [
+      {
+        "Id": 1,
+        "Question": "Vì sao tên gì",
+        "AnswerA": "sao",
+        "AnswerB": "trăng",
+        "AnswerC": null,
+        "AnswerD": null,
+        "TrueAnswer": null
+      }
+    ]
+  }
+}
