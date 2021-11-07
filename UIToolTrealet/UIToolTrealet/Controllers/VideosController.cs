@@ -20,15 +20,29 @@ namespace UIToolTrealet.Controllers
         }
 
         // GET: Videos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var applicationDbContext = _context.Video.Include(v => v.Item);
-            return View(await applicationDbContext.ToListAsync());
+            int? itemId = id;
+            if (itemId == null)
+            {
+                return NotFound();
+            }
+
+            var videos = await _context.Video.Where(m => m.ItemId.Equals(itemId)).ToListAsync<Video>();
+            if (videos == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["ItemId"] = id;
+
+            return View(videos);
         }
 
         // GET: Videos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -46,10 +60,21 @@ namespace UIToolTrealet.Controllers
         }
 
         // GET: Videos/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId");
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId");
+                Video video = new Video()
+                {
+                    ItemId = (int)id,
+                };
+                return View(video);
+            }
         }
 
         // POST: Videos/Create
@@ -63,7 +88,7 @@ namespace UIToolTrealet.Controllers
             {
                 _context.Add(video);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = video.ItemId });
             }
             ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId", video.ItemId);
             return View(video);
@@ -116,7 +141,7 @@ namespace UIToolTrealet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = video.ItemId });
             }
             ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId", video.ItemId);
             return View(video);
@@ -144,12 +169,12 @@ namespace UIToolTrealet.Controllers
         // POST: Videos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int itemId)
         {
             var video = await _context.Video.FindAsync(id);
             _context.Video.Remove(video);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new { id = itemId });
         }
 
         private bool VideoExists(int id)

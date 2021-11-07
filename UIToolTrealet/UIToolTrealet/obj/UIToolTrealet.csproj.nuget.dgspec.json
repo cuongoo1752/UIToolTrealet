@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lmcuong\\source\\repos\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj": {}
+    "E:\\University\\Thiet ke giao dien nguoi dung\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lmcuong\\source\\repos\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj": {
+    "E:\\University\\Thiet ke giao dien nguoi dung\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lmcuong\\source\\repos\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj",
+        "projectUniqueName": "E:\\University\\Thiet ke giao dien nguoi dung\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj",
         "projectName": "UIToolTrealet",
-        "projectPath": "C:\\Users\\lmcuong\\source\\repos\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj",
+        "projectPath": "E:\\University\\Thiet ke giao dien nguoi dung\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj",
         "packagesPath": "C:\\Users\\lmcuong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lmcuong\\source\\repos\\UIToolTrealet\\UIToolTrealet\\obj\\",
+        "outputPath": "E:\\University\\Thiet ke giao dien nguoi dung\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lmcuong\\AppData\\Roaming\\NuGet\\NuGet.Config",

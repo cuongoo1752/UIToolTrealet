@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MGYT1pwhVpNYMY147aWaLdGxgWF3WsPOUsizM7F0TRI83/ZlyNlmbhJhwMLCaOegBPRVW6hc5d762m4XNICeOQ==",
+  "dgSpecHash": "wleRInhVr+NZsPFJF/PU7HXKychKFO8JCViJVEs+hzSwawlg20DKI9Z444zlOg8oEyXbQwUAkwFsG0WPNTQxRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lmcuong\\source\\repos\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj",
+  "projectFilePath": "E:\\University\\Thiet ke giao dien nguoi dung\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet\\UIToolTrealet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lmcuong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.19\\microsoft.aspnetcore.cryptography.internal.3.1.19.nupkg.sha512",
     "C:\\Users\\lmcuong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.19\\microsoft.aspnetcore.cryptography.keyderivation.3.1.19.nupkg.sha512",

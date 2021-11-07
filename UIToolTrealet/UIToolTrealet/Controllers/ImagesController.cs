@@ -19,11 +19,25 @@ namespace UIToolTrealet.Controllers
             _context = context;
         }
 
-        // GET: Images
-        public async Task<IActionResult> Index()
+        // GET: Images/5(ItemId)
+        public async Task<IActionResult> Index(int? id)
         {
-            var applicationDbContext = _context.Image.Include(i => i.Item);
-            return View(await applicationDbContext.ToListAsync());
+            int? itemId = id;
+
+            if (itemId == null)
+            {
+                return NotFound();
+            }
+
+            var images = await _context.Image.Where(m => m.ItemId.Equals(itemId)).ToListAsync<Image>();
+            if (images == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["ItemId"] = id;
+
+            return View(images);
         }
 
         // GET: Images/Details/5
@@ -46,10 +60,22 @@ namespace UIToolTrealet.Controllers
         }
 
         // GET: Images/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId");
-            return View();
+            if(id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId");
+                Image image = new Image()
+                {
+                    ItemId = (int)id,
+                };
+                return View(image);
+            }
+            
         }
 
         // POST: Images/Create
@@ -63,7 +89,7 @@ namespace UIToolTrealet.Controllers
             {
                 _context.Add(image);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = image.ItemId});
             }
             ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId", image.ItemId);
             return View(image);
@@ -116,7 +142,7 @@ namespace UIToolTrealet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = image.ItemId });
             }
             ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId", image.ItemId);
             return View(image);
@@ -144,12 +170,12 @@ namespace UIToolTrealet.Controllers
         // POST: Images/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int itemId)
         {
             var image = await _context.Image.FindAsync(id);
             _context.Image.Remove(image);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new { id = itemId });
         }
 
         private bool ImageExists(int id)

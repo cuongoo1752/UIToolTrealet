@@ -20,10 +20,23 @@ namespace UIToolTrealet.Controllers
         }
 
         // GET: Interactions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var applicationDbContext = _context.Interaction.Include(i => i.Item);
-            return View(await applicationDbContext.ToListAsync());
+            int? itemId = id;
+            if (itemId == null)
+            {
+                return NotFound();
+            }
+
+            var interactions = await _context.Interaction.Where(m => m.ItemId.Equals(itemId)).ToListAsync<Interaction>();
+            if (interactions == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["ItemId"] = id;
+
+            return View(interactions);
         }
 
         // GET: Interactions/Details/5
@@ -46,9 +59,22 @@ namespace UIToolTrealet.Controllers
         }
 
         // GET: Interactions/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId");
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId");
+                Interaction interaction = new Interaction()
+                {
+                    ItemId = (int)id,
+                };
+                return View(interaction);
+            }
             return View();
         }
 
@@ -63,7 +89,7 @@ namespace UIToolTrealet.Controllers
             {
                 _context.Add(interaction);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = interaction.ItemId });
             }
             ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId", interaction.ItemId);
             return View(interaction);
@@ -116,7 +142,7 @@ namespace UIToolTrealet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = interaction.ItemId });
             }
             ViewData["ItemId"] = new SelectList(_context.Item, "ItemId", "ItemId", interaction.ItemId);
             return View(interaction);
@@ -144,12 +170,12 @@ namespace UIToolTrealet.Controllers
         // POST: Interactions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int itemId)
         {
             var interaction = await _context.Interaction.FindAsync(id);
             _context.Interaction.Remove(interaction);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new { id = itemId });
         }
 
         private bool InteractionExists(int id)

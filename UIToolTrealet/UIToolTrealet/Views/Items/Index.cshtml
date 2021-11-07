@@ -4,46 +4,69 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    .desc-item {
+        display: inline-block;
+        max-height: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+
+<h1>Danh sách đồ vật</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><button type="button" class="btn btn-primary">Tạo đồ vật</button></a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
+            <th style="width: 15%;">
+                TIÊU ĐỀ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Desc)
+                ẢNH ĐẠI DIỆN
             </th>
+            <th class="w-50">
+                MÔ TẢ
+            </th>
+
             <th>
-                @Html.DisplayNameFor(model => model.ImageCodeAvatar)
+                THAO TÁC
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+
+
+
+    @foreach (var item in Model)
+         {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Desc)
+                <img src="https://hcloud.trealet.com/albums/Nhom01/app/ngoc-lu.jpg"
+                     class="rounded mx-auto d-block" alt="Không có ảnh đại diện" style="max-height: 140px;">
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageCodeAvatar)
+                <div class="desc-item">
+                    @Html.DisplayFor(modelItem => item.Desc)
+                </div>
+
             </td>
+
             <td>
-                <a asp-action="Download" asp-route-id="@item.ItemId">Download</a> |
-                <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
+                <a asp-action="Download" asp-route-id="@item.ItemId">Tải về</a> |
+                <a asp-action="Edit" asp-route-id="@item.ItemId">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.ItemId">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.ItemId">Xóa</a>
             </td>
-            sdfjklasfk
         </tr>
-}
+         }
+    
+
     </tbody>
 </table>
