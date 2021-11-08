@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Sửa đồ vật</h1>
 
-<h4>Item</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,31 +13,71 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ItemId" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+                <label class="control-label">Tiêu đề</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Desc" class="control-label"></label>
+                <label class="control-label">Mô tả</label>
                 <input asp-for="Desc" class="form-control" />
                 <span asp-validation-for="Desc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageCodeAvatar" class="control-label"></label>
-                <input asp-for="ImageCodeAvatar" class="form-control" />
+                <label class="control-label">Địa chỉ ảnh đại diện</label>
+                <input id="url" asp-for="ImageCodeAvatar" class="form-control" />
                 <span asp-validation-for="ImageCodeAvatar" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label class="control-label">Ảnh đại diện từ địa chỉ</label>
+                <img id="image" src="@Model.ImageCodeAvatar"
+                     class="rounded d-block" alt="Không có ảnh đại diện!" style="max-height: 140px;">
+            </div>
+            <div class="form-group">
+                <a class="nav-link text-dark p-0" asp-area="" asp-controller="Images" asp-action="Index" asp-route-id="@Model.ItemId">
+                    <button type="button" class="btn btn-secondary">Xem danh sách ảnh</button>
+                </a>
+            </div>
+            <div class="form-group">
+                <a class="nav-link text-dark p-0" asp-area="" asp-controller="Videos" asp-action="Index" asp-route-id="@Model.ItemId">
+                    <button type="button" class="btn btn-secondary">Xem danh sách video</button>
+                </a>
+            </div>
+            <div class="form-group">
+                <a class="nav-link text-dark p-0" asp-area="" asp-controller="Interactions" asp-action="Index" asp-route-id="@Model.ItemId">
+                    <button type="button" class="btn btn-secondary">Xem danh sách câu hỏi</button>
+                </a>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+    
+
+
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Trở về</a>
 </div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    var lastValue = "";
+    document.getElementById("url").onkeyup = function () {
+        let inputValue = document.getElementById("url").value;
+        if (lastValue != inputValue) {
+            document.getElementById("image").setAttribute("src", inputValue);
+
+            lastValue = inputValue;
+        }
+    }
+
+</script>

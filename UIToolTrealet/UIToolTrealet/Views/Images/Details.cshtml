@@ -4,27 +4,29 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Chi tiết ảnh</h1>
 
 <div>
-    <h4>Image</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageCodeTrealet)
+        <dt class="col-sm-2">
+            ĐỊA CHỈ ẢNH
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ImageCodeTrealet)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Item)
+        <dt class="col-sm-2">
+            ẢNH
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Item.ItemId)
+        <dd class="col-sm-10">
+            <img id="image" src="@Model.ImageCodeTrealet"
+                 class="rounded d-block" alt="Không có ảnh đại diện!" style="max-height: 140px;">
         </dd>
+
+
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ImageId">Edit</a> |
-    <a asp-action="Index" asp-route-id="@Model.ItemId">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ImageId">Sửa</a> |
+    <a asp-action="Index" asp-route-id="@Model.ItemId">Trở về</a>
 </div>

@@ -4,42 +4,54 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Danh sách ảnh</h1>
 
-<p>
-    <a asp-action="Create" asp-route-id="@ViewData["ItemId"]">Create New</a>
+<p class="my-3">
+    <a asp-action="Create" asp-route-id="@ViewData["ItemId"]"><button type="button" class="btn btn-primary">Tạo ảnh mới</button></a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageCodeTrealet)
+            <th style="text-align: center">
+                STT
+            </th>
+            <th style="text-align: center">
+                HÌNH ẢNH
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item)
+                ĐỊA CHỈ ẢNH
             </th>
-            <th></th>
+            <th style="text-align: center">
+                THAO TÁC
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageCodeTrealet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Item.ItemId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ImageId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ImageId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ImageId">Delete</a>
-            </td>
-        </tr>
-}
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(rowNo += 1)
+                </td>
+                <td>
+                    <img src="@item.ImageCodeTrealet"
+                         class="rounded mx-auto d-block" alt="Không có ảnh đại diện!" style="max-height: 140px;">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageCodeTrealet)
+                </td>
+
+                <td style="width: 14%">
+                    <a asp-action="Edit" asp-route-id="@item.ImageId">Sửa</a> |
+                    <a asp-action="Details" asp-route-id="@item.ImageId">Chi tiết</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ImageId">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 <div>
-    <a asp-area="" asp-controller="Items" asp-action="Index">Back to List</a>
+    <a asp-area="" asp-controller="Items" asp-action="Index">Trở về</a>
 </div>

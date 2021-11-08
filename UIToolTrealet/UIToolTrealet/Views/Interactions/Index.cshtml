@@ -4,41 +4,49 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Danh sách câu hỏi</h1>
 
-<p>
-    <a asp-action="Create" asp-route-id="@ViewData["ItemId"]">Create New</a>
+<p class="my-3">
+    <a asp-action="Create" asp-route-id="@ViewData["ItemId"]"><button type="button" class="btn btn-primary">Tạo câu hỏi mới</button></a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Question)
+                STT
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnswerA)
+                CÂU HỎI
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnswerB)
+                TRẢ LỜI A
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnswerC)
+                TRẢ LỜI B
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AnswerD)
+                TRẢ LỜI C
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TrueAnswer)
+                TRẢ LỜI D
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item)
+                ĐÁP ÁN ĐÚNG
             </th>
-            <th></th>
+
+            <th>
+                THAO TÁC 
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
         <tr>
+            <td>
+                @(rowNo += 1)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Question)
             </td>
@@ -57,19 +65,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TrueAnswer)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Item.ItemId)
-            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.InteractionId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.InteractionId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.InteractionId">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
 
 <div>
-    <a asp-area="" asp-controller="Items" asp-action="Index">Back to List</a>
+    <a asp-area="" asp-controller="Items" asp-action="Index">Trở về</a>
 </div>

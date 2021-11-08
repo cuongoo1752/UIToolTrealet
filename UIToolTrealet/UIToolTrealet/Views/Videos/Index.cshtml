@@ -4,34 +4,49 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Danh sách video</h1>
 
-<p>
-    <a asp-action="Create" asp-route-id="@ViewData["ItemId"]">Create New</a>
+<p class="my-3">
+    <a asp-action="Create" asp-route-id="@ViewData["ItemId"]"><button type="button" class="btn btn-primary">Tạo video mới</button></a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
+            <th style="text-align: center">
+                STT
+            </th>
+            <th >
+                TIÊU ĐỀ VIDEO
+            </th>
+            <th class="w-25" style="text-align: center">
+                VIDEO MINH HỌA
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Url)
+                ĐỊA CHỈ IFRAME
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                LOẠI
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item)
-            </th>
-            <th></th>
+
+            <th style="text-align: center"> THAO TÁC</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
+                @(rowNo += 1)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+
+                <div class="embed-responsive embed-responsive-16by9" style="height: 140px">
+                    <iframe class="embed-responsive-item" src="@item.Url" allowfullscreen></iframe>
+                </div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Url)
@@ -39,19 +54,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Item.ItemId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VideoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VideoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VideoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.VideoId">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.VideoId">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.VideoId">Xóa</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
 
 <div>
-    <a asp-area="" asp-controller="Items" asp-action="Index">Back to List</a>
+    <a asp-area="" asp-controller="Items" asp-action="Index">Trở về</a>
 </div>

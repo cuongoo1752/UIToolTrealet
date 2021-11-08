@@ -6,18 +6,19 @@
     "ImageAvatarCode": null,
     "Images": [
       {
-        "Id": 1,
-        "Code": "12"
-      }
-    ],
-    "Videos": [
+        "Id": 16,
+        "Code": "àdasdfas"
+      },
       {
-        "Id": 1,
-        "Url": "álkf",
-        "Title": "Video trống đồng",
-        "Type": "Youtube"
+        "Id": 17,
+        "Code": "âsd"
+      },
+      {
+        "Id": 18,
+        "Code": "ấdf"
       }
     ],
+    "Videos": [],
     "Interaction": [
       {
         "Id": 1,

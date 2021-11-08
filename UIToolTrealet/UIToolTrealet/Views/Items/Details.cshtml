@@ -7,10 +7,9 @@
 
 
 
-<h1>Details</h1>
+<h1>Chi tiết đồ vật</h1>
 
 <div>
-    <h4>Item</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2 mb-2">
@@ -26,7 +25,7 @@
             @Html.DisplayFor(model => model.Desc)
         </dd>
         <dt class="col-sm-2">
-            MÃ CODE AVA
+            ĐẠI CHỈ ẢNH ĐẠI DIỆN
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ImageCodeAvatar)
@@ -35,14 +34,14 @@
             ẢNH AVA MINH HỌA
         </dt>
         <dd class="col-sm-10">
-            <img src="https://hcloud.trealet.com/cache/Nhom01/app/translate.png"
+            <img src="@Model.ImageCodeAvatar"
                  class="rounded d-block" alt="Không có ảnh đại diện" style="max-height: 140px;">
         </dd>
         <dt class="col-sm-2">
             DANH SÁCH ẢNH
         </dt>
         <dd class="col-sm-10">
-            <a class="nav-link text-dark" asp-area=""  asp-controller="Images" asp-action="Index" asp-route-id="@Model.ItemId">
+            <a class="nav-link text-dark p-0" asp-area=""  asp-controller="Images" asp-action="Index" asp-route-id="@Model.ItemId">
                 <button type="button" class="btn btn-secondary">Xem danh sách ảnh</button>
             </a>
 
@@ -51,7 +50,7 @@
             DANH SÁCH VIDEO
         </dt>
         <dd class="col-sm-10">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Videos" asp-action="Index" asp-route-id="@Model.ItemId">
+            <a class="nav-link text-dark p-0" asp-area="" asp-controller="Videos" asp-action="Index" asp-route-id="@Model.ItemId">
                 <button type="button" class="btn btn-secondary">Xem danh sách video</button>
             </a>
         </dd>
@@ -59,7 +58,7 @@
             DANH SÁCH CÂU HỎI
         </dt>
         <dd class="col-sm-10">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Interactions" asp-action="Index" asp-route-id="@Model.ItemId">
+            <a class="nav-link text-dark p-0" asp-area="" asp-controller="Interactions" asp-action="Index" asp-route-id="@Model.ItemId">
                 <button type="button" class="btn btn-secondary">Xem danh sách câu hỏi</button>
             </a>
         </dd>
@@ -67,6 +66,6 @@
 </div>
 <div class="my-5"></div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ItemId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ItemId">Sửa</a> |
+    <a asp-action="Index">Trở về</a>
 </div>

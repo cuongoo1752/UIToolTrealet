@@ -16,17 +16,21 @@
 
 <h1>Danh sách đồ vật</h1>
 
-<p>
+<p class="my-3">
     <a asp-action="Create"><button type="button" class="btn btn-primary">Tạo đồ vật</button></a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                STT
+            </th>
             <th style="width: 15%;">
                 TIÊU ĐỀ
             </th>
-            <th>
+            <th style="text-align: center">
                 ẢNH ĐẠI DIỆN
+                
             </th>
             <th class="w-50">
                 MÔ TẢ
@@ -39,17 +43,21 @@
     </thead>
     <tbody>
 
+        @{ int rowNo = 0; }
 
-
-    @foreach (var item in Model)
-         {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td style="text-align: center">
+                @(rowNo += 1)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <img src="https://hcloud.trealet.com/albums/Nhom01/app/ngoc-lu.jpg"
-                     class="rounded mx-auto d-block" alt="Không có ảnh đại diện" style="max-height: 140px;">
+                <img src="@item.ImageCodeAvatar"
+                     class="rounded mx-auto d-block" alt="Không có ảnh đại diện!" style="max-height: 140px;">
             </td>
             <td>
                 <div class="desc-item">
@@ -58,15 +66,15 @@
 
             </td>
 
-            <td>
+            <td style="width: 11%; text-align: center" >
                 <a asp-action="Download" asp-route-id="@item.ItemId">Tải về</a> |
                 <a asp-action="Edit" asp-route-id="@item.ItemId">Sửa</a> |
                 <a asp-action="Details" asp-route-id="@item.ItemId">Chi tiết</a> |
                 <a asp-action="Delete" asp-route-id="@item.ItemId">Xóa</a>
             </td>
         </tr>
-         }
-    
+        }
+
 
     </tbody>
 </table>

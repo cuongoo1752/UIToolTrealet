@@ -4,39 +4,44 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Chi tiết Video</h1>
 
 <div>
-    <h4>Video</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+        <dt class="col-sm-2">
+            TIÊU ĐỀ VIDEO
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Url)
+        <dt class="col-sm-2">
+            ĐỊA CHỈ VIDEO
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Url)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
+        <dt class="col-sm-2">
+            VIDEO TỪ ĐỊA CHỈ
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
+            <div class="embed-responsive embed-responsive-16by9" style="width: 300px">
+                <iframe id="image" class="embed-responsive-item" src="@Model.Url" allowfullscreen></iframe>
+            </div>
+        </dd>
+        <dt class="col-sm-2">
+            LOẠI VIDEO
+        </dt>
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Type)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Item)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Item.ItemId)
-        </dd>
+
+
+        
+
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.VideoId">Edit</a> |
-    <a asp-action="Index" asp-route-id="@Model.ItemId">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.VideoId">Sửa</a> |
+    <a asp-action="Index" asp-route-id="@Model.ItemId">Trở về</a>
 </div>
