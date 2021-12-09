@@ -17,7 +17,8 @@
 <h1>Danh sách đồ vật</h1>
 
 <p class="my-3">
-    <a asp-action="Create"><button type="button" class="btn btn-primary">Tạo đồ vật</button></a>
+    <a asp-action="Create" asp-route-id=@ViewData["PageId"]><button type="button" class="btn btn-primary">Tạo đồ vật</button></a>
+    <a asp-action="Download" asp-route-id=@ViewData["PageId"] asp-route-isPage="true">Tải về file của Page</a>
 </p>
 <table class="table">
     <thead>
@@ -56,7 +57,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <img src="@item.ImageCodeAvatar"
+                <img src="@item.TitleImage"
                      class="rounded mx-auto d-block" alt="Không có ảnh đại diện!" style="max-height: 140px;">
             </td>
             <td>
@@ -67,7 +68,6 @@
             </td>
 
             <td style="width: 11%; text-align: center" >
-                <a asp-action="Download" asp-route-id="@item.ItemId">Tải về</a> |
                 <a asp-action="Edit" asp-route-id="@item.ItemId">Sửa</a> |
                 <a asp-action="Details" asp-route-id="@item.ItemId">Chi tiết</a> |
                 <a asp-action="Delete" asp-route-id="@item.ItemId">Xóa</a>
@@ -78,3 +78,6 @@
 
     </tbody>
 </table>
+<div>
+    <a asp-area="" asp-controller="Pages" asp-action="Index">Trở về</a>
+</div>

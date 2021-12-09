@@ -83,7 +83,7 @@ namespace UIToolTrealet.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ImageId,ImageCodeTrealet,ItemId")] Image image)
+        public async Task<IActionResult> Create([Bind("ImageId,Url,ItemId")] Image image)
         {
             if (ModelState.IsValid)
             {
@@ -117,7 +117,7 @@ namespace UIToolTrealet.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ImageId,ImageCodeTrealet,ItemId")] Image image)
+        public async Task<IActionResult> Edit(int id, [Bind("ImageId,Url,ItemId")] Image image)
         {
             if (id != image.ImageId)
             {

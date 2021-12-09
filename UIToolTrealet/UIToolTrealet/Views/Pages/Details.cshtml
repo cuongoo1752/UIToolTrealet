@@ -1,0 +1,73 @@
+﻿@model UIToolTrealet.Models.Page
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết Trang</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            TIÊU ĐỀ
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            MÔ TẢ
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt class="col-sm-2">
+            GIỜ MỞ CỬA
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OpeningHours)
+        </dd>
+        <dt class="col-sm-2">
+            TRƯNG BÀY
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Exhibition)
+        </dd>
+        <dt class="col-sm-2">
+            GIỜ ĐÓNG CỬA
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpcomingEvents)
+        </dd>
+        <dt class="col-sm-2">
+            MÔ TẢ ĐĂNG KÝ
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RegistrationDesc)
+        </dd>
+        <dt class="col-sm-2">
+            MÔ TẢ MUA ONLINE
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BuyOnlineDesc)
+        </dd>
+        <dt class="col-sm-2">
+            ĐỊA CHỈ ẢNH BÌA
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BannerURL)
+        </dd>
+        <dt class="col-sm-2">
+            DANH SÁCH ĐỒ VẬT
+        </dt>
+        <dd class="col-sm-10">
+            <a class="nav-link text-dark p-0" asp-area="" asp-controller="Items" asp-action="Index" asp-route-id="@Model.PageId">
+                <button type="button" class="btn btn-secondary">Xem danh sách đồ vật</button>
+            </a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PageId">Sửa</a> |
+    <a asp-action="Index">Trở về</a>
+</div>

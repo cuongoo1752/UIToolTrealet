@@ -1,0 +1,67 @@
+﻿@model UIToolTrealet.Models.Page
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Tạo Page mới</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Tiêu đề</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Mô tả</label>
+                <input asp-for="Desc" class="form-control" />
+                <span asp-validation-for="Desc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Giờ mở cửa</label>
+                <input asp-for="OpeningHours" class="form-control" />
+                <span asp-validation-for="OpeningHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Trưng bày</label>
+                <input asp-for="Exhibition" class="form-control" />
+                <span asp-validation-for="Exhibition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Sự kiện sắp tới</label>
+                <input asp-for="UpcomingEvents" class="form-control" />
+                <span asp-validation-for="UpcomingEvents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Mô tả đăng ký</label>
+                <input asp-for="RegistrationDesc" class="form-control" />
+                <span asp-validation-for="RegistrationDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Mô tả mua online</label>
+                <input asp-for="BuyOnlineDesc" class="form-control" />
+                <span asp-validation-for="BuyOnlineDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Địa chỉ ảnh</label>
+                <input asp-for="BannerURL" class="form-control" />
+                <span asp-validation-for="BannerURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Trở về</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

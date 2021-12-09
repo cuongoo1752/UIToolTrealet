@@ -11,7 +11,7 @@ namespace UIToolTrealet.Models
         [Key]
         public int ImageId { get; set; }
         
-        public string ImageCodeTrealet { get; set; }
+        public string Url { get; set; }
         public int ItemId { get; set; }
         public Item Item { get; set; }
     }

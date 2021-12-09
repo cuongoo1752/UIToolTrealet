@@ -369,3 +369,14 @@ E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTr
 E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\UIToolTrealet.pdb
 E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\UIToolTrealet.genruntimeconfig.cache
 E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\UIToolTrealet.csproj.CopyComplete
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Infoes\Create.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Infoes\Delete.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Infoes\Details.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Infoes\Edit.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Infoes\Index.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Pages\Create.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Pages\Delete.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Pages\Details.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Pages\Edit.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\obj\Debug\netcoreapp3.1\Razor\Views\Pages\Index.cshtml.g.cs
+E:\University\Thiet ke giao dien nguoi dung\UIToolTrealet\UIToolTrealet\UIToolTrealet\bin\Debug\netcoreapp3.1\global.json

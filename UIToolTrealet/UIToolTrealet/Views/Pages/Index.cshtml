@@ -1,0 +1,48 @@
+﻿@model IEnumerable<UIToolTrealet.Models.Page>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Danh sách Trang</h1>
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-primary">Tạo trang web mới</button></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                TIÊU ĐỀ
+            </th>
+            <th>
+                MÔ TẢ
+            </th>
+            
+            <th>
+                LINK ẢNH
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desc)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.BannerURL)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PageId">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.PageId">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.PageId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

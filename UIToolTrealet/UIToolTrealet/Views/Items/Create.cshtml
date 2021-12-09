@@ -12,20 +12,27 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label  class="control-label">Tiêu đề</label>
+                <label class="control-label">Tiêu đề</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label  class="control-label">Mô tả</label>
+                <label class="control-label">Mô tả</label>
                 <input asp-for="Desc" class="form-control" />
                 <span asp-validation-for="Desc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label  class="control-label">Địa chỉ ảnh đại diện</label>
-                <input asp-for="ImageCodeAvatar" class="form-control" />
-                <span asp-validation-for="ImageCodeAvatar" class="text-danger"></span>
+                <label class="control-label">Địa chỉ ảnh đại diện</label>
+                <input id="url" asp-for="TitleImage" class="form-control" />
+                <span asp-validation-for="TitleImage" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label class="control-label">Ảnh từ địa chỉ</label>
+                <img id="image"
+                     class="rounded d-block" alt="Không có ảnh đại diện" style="max-height: 140px;">
+            </div>
+            <input type="hidden" asp-for="PageId" class="form-control" />
+
             <div class="form-group">
                 <input type="submit" value="Tạo mới" class="btn btn-primary" />
             </div>
@@ -34,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Trở về</a>
+    <a asp-action="Index" asp-route-id="@Model.PageId">Trở về</a>
 </div>
 
 
@@ -43,3 +50,15 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+    var lastValue = "";
+    document.getElementById("url").onkeyup = function () {
+        let inputValue = document.getElementById("url").value;
+        if (lastValue != inputValue) {
+            document.getElementById("image").setAttribute("src", inputValue);
+
+            lastValue = inputValue;
+        }
+    }
+
+</script>

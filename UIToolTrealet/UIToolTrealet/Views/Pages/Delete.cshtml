@@ -1,0 +1,67 @@
+﻿@model UIToolTrealet.Models.Page
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h1>Bạn có chắc muốn xóa trang này không?</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            TIÊU ĐỀ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            MÔ TẢ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt class = "col-sm-2">
+            GIỜ MỞ CỬA
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OpeningHours)
+        </dd>
+        <dt class = "col-sm-2">
+            TRƯNG BÀY
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Exhibition)
+        </dd>
+        <dt class = "col-sm-2">
+            SỰ KIỆN ĐÓNG CỬA
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UpcomingEvents)
+        </dd>
+        <dt class = "col-sm-2">
+            MÔ TẢ ĐĂNG KÝ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegistrationDesc)
+        </dd>
+        <dt class = "col-sm-2">
+            MÔ TẢ MUA ONLINE
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BuyOnlineDesc)
+        </dd>
+        <dt class = "col-sm-2">
+            ĐỊA CHỈ ẢNH BÌA
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BannerURL)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PageId" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Trở về</a>
+    </form>
+</div>

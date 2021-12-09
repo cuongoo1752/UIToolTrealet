@@ -10,14 +10,14 @@ using UIToolTrealet.Data;
 namespace UIToolTrealet.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211105070646_initialsetup")]
+    [Migration("20211124103032_initialsetup")]
     partial class initialsetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.20")
+                .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -228,17 +228,40 @@ namespace UIToolTrealet.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ImageCodeTrealet")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ImageId");
 
                     b.HasIndex("ItemId");
 
                     b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("UIToolTrealet.Models.Info", b =>
+                {
+                    b.Property<int>("InfoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InfoId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Info");
                 });
 
             modelBuilder.Entity("UIToolTrealet.Models.Interaction", b =>
@@ -286,15 +309,56 @@ namespace UIToolTrealet.Data.Migrations
                     b.Property<string>("Desc")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageCodeAvatar")
+                    b.Property<int>("PageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ItemId");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("Item");
+                });
+
+            modelBuilder.Entity("UIToolTrealet.Models.Page", b =>
+                {
+                    b.Property<int>("PageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BannerURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BuyOnlineDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Exhibition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpeningHours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegistrationDesc")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ItemId");
+                    b.Property<string>("UpcomingEvents")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Item");
+                    b.HasKey("PageId");
+
+                    b.ToTable("Page");
                 });
 
             modelBuilder.Entity("UIToolTrealet.Models.Video", b =>
@@ -383,11 +447,29 @@ namespace UIToolTrealet.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("UIToolTrealet.Models.Info", b =>
+                {
+                    b.HasOne("UIToolTrealet.Models.Item", "Item")
+                        .WithMany("Infoes")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("UIToolTrealet.Models.Interaction", b =>
                 {
                     b.HasOne("UIToolTrealet.Models.Item", "Item")
                         .WithMany("Interactions")
                         .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UIToolTrealet.Models.Item", b =>
+                {
+                    b.HasOne("UIToolTrealet.Models.Page", "Page")
+                        .WithMany("Items")
+                        .HasForeignKey("PageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

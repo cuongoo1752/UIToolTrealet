@@ -62,7 +62,7 @@ namespace UIToolTrealet
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Items}/{action=Index}/{id?}");
+                    pattern: "{controller=Pages}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
